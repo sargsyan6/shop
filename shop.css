@@ -50,9 +50,24 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 .container{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     margin-top: 50px;
+}
+
+.container>div{
+    margin: 10px;
+    overflow-x: hidden;
+}
+.container>div:hover{
+    border-color: #056a35;
+    box-shadow: 0 7px 17px 0 rgb(0 35 32 / 30%);
+    position: relative;
+    z-index: 3;
+}
+.container>div>img:hover{
+    transform: scale(1.2);
+    transition: transform  1s;
 }
 .cart_icon {
     width: 38px;
@@ -78,6 +93,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     transition: background-color .3s;
     cursor: pointer;
 }
+
+
 
 
 
@@ -151,6 +168,7 @@ h3{
 display: flex;
 justify-content: end;
 position: relative;
+cursor: pointer;
 }
 
 .pop-up{

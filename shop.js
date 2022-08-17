@@ -19,6 +19,7 @@ let container = document.querySelector(".container")
 let shop = document.querySelector(".shop")
 let popUp = document.querySelector(".pop-up")
 let searchInput = document.querySelector(".search-input")
+let divShop = document.querySelector(".card")
 
 data.forEach((item)=>{
     let section = document.createElement("div")
@@ -92,8 +93,8 @@ data.forEach((item)=>{
     priceDiv.style.fontSize = "17px"
     priceDiv.style.marginTop = "17px"
     name.innerText = item.name
-    image.style.width = "167px"
-    image.style.height = "192px"
+    image.style.width = "157px"
+    image.style.height = "182px"
     image.setAttribute("src",`${item.src}`)
     section.append(image)
     section.append(name)
@@ -126,7 +127,7 @@ searchInput.addEventListener("input",function (e) {
 
 
 let popUpOn = true
-shop.addEventListener("click",()=>{
+divShop.addEventListener("click",()=>{
     if(popUp.children.length){
         if(popUpOn){
             popUp.style.display = "block"
@@ -140,3 +141,4 @@ shop.addEventListener("click",()=>{
    
     
 })
+
