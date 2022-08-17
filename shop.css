@@ -155,8 +155,6 @@ position: relative;
 
 .pop-up{
     position: absolute;
-    width: 500px;
-    height: 500px;
     top: 45px;
     right: 0;
     background-color: white;
@@ -220,4 +218,16 @@ form {
     opacity: 1;
   }
 
+  .pop-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .pop-container>div{
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .remove{
+    cursor: pointer;
+  }
   

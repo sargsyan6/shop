@@ -40,14 +40,52 @@ data.forEach((item)=>{
     addButton.innerText = "Ավելացնել"
     addDiv.append(addButton)
     addDiv.classList.add("addDiv")
-    addButton.addEventListener("click",()=>{
-        shop.innerText = +shop.innerText + 1 +""
+    let popUpDiv = document.querySelector(".pop-up")
+    addButton.addEventListener("click",(e)=>{
+        let popContainer = document.createElement("div")
+        popContainer.classList.add("pop-container")
+        popContainer.innerHTML = `
+        <img width="150" height="150" src=${e.target.parentElement.parentElement.firstChild.src}>
+        <div>${e.target.parentElement.parentElement.firstChild.nextElementSibling.innerText}</div>
+        <div>${e.target.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling.innerText}</div>
+        <div>${e.target.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling.nextElementSibling.firstChild.nextElementSibling.value}հատ</div>
+        <div class="remove"><i class="fa fa-remove" style="font-size:24px"></i></i></div>
+        `
+        popUpDiv.append(popContainer)
+        let remove = document.querySelectorAll(".remove")
+        remove.forEach((item)=>{
+            item.addEventListener("click",(e)=>{
+                e.target.parentElement.parentElement.remove()
+                shop.innerText =popUpDiv.children.length 
+                if(popUpDiv.children.length ===0){
+                    popUpDiv.style.display = "none"
+                }
+                
+            })
+        })
+        shop.innerText =popUpDiv.children.length 
     })
+    
     let span1 = document.createElement("span")
+    span1.style.cursor = "pointer"
+    span1.innerHTML = `<i class="fa fa-minus" style="font-size:24px"></i>`
+    span1.addEventListener("click",(e)=>{
+        let count = e.target.parentElement.nextElementSibling
+        if(+count.value>1 ){
+            count.value = +count.value - 1 + ""
+        }
+    })
+    
     let input = document.createElement("input")
     input.classList.add("inpTovCount")
     input.value = "1"
     let span2 = document.createElement("span")
+    span2.style.cursor = "pointer"
+    span2.innerHTML = `<i class="fa fa-plus" style="font-size:24px"></i>`
+    span2.addEventListener("click",(e)=>{
+        let count = e.target.parentElement.previousElementSibling
+        count.value = +count.value + 1 + ""
+    })
     controlButton.append(span1,input,span2)
     priceDiv.innerText = item.value
     priceDiv.style.color = "#d32524"
@@ -64,6 +102,7 @@ data.forEach((item)=>{
     section.append(addDiv)
     section.append(heartDiv)
     container.append(section)
+    
 })
 let productName = document.querySelectorAll(".section h3")
 let productNames = [...productName].map((item)=>item.innerText)
@@ -88,13 +127,16 @@ searchInput.addEventListener("input",function (e) {
 
 let popUpOn = true
 shop.addEventListener("click",()=>{
-    if(popUpOn){
-        popUp.style.display = "block"
-        popUpOn = false
-    }else{
-        popUp.style.display = "none"
-        popUpOn = true
+    if(popUp.children.length){
+        if(popUpOn){
+            popUp.style.display = "block"
+            popUpOn = false
+        }else{
+            popUp.style.display = "none"
+            popUpOn = true
+        }
     }
+    
    
     
 })
