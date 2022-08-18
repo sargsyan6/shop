@@ -135,6 +135,7 @@ h3{
 .cart_basket {
     position: relative;
     display: block;
+    cursor: pointer;
 }
 
 .addDiv{
@@ -168,7 +169,7 @@ h3{
 display: flex;
 justify-content: end;
 position: relative;
-cursor: pointer;
+
 }
 
 .pop-up{
