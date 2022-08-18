@@ -20,6 +20,7 @@ let shop = document.querySelector(".shop")
 let popUp = document.querySelector(".pop-up")
 let searchInput = document.querySelector(".search-input")
 let divShop = document.querySelector(".card")
+let cartBasket = document.querySelector(".cart_basket")
 
 data.forEach((item)=>{
     let section = document.createElement("div")
@@ -64,6 +65,7 @@ data.forEach((item)=>{
                 
             })
         })
+        e.target.parentElement.parentElement.firstChild.nextElementSibling.nextElementSibling.nextElementSibling.firstChild.nextElementSibling.value = "1"
         shop.innerText =popUpDiv.children.length 
     })
     
@@ -127,7 +129,7 @@ searchInput.addEventListener("input",function (e) {
 
 
 let popUpOn = true
-divShop.addEventListener("click",()=>{
+cartBasket.addEventListener("click",(event)=>{
     if(popUp.children.length){
         if(popUpOn){
             popUp.style.display = "block"
@@ -137,8 +139,19 @@ divShop.addEventListener("click",()=>{
             popUpOn = true
         }
     }
-    
-   
+    event.stopPropagation()
     
 })
+
+let closePopUp = document.querySelectorAll('div:not(.pop-up)');
+closePopUp.forEach(element => {
+    element.addEventListener("click",(e)=>{
+        if(popUp.style.display = "block"){
+            popUp.style.display = "none"
+            popUpOn = true
+        }
+    })
+});
+
+
 
